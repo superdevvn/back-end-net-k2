@@ -55,9 +55,38 @@ namespace OOP
             //var c = a.FirstOrDefault(value => value > 7);
             //Console.WriteLine(c);
 
-            int[] a = { 2, 4, 6, 8, 10, 7 };
-            Console.WriteLine(a.All(value => value % 2 == 0));
-            Console.WriteLine(a.Any(value => value % 2 == 1));
+            //int[] a = { 2, 4, 6, 8, 10, 7 };
+            //Console.WriteLine(a.All(value => value % 2 == 0));
+            //Console.WriteLine(a.Any(value => value % 2 == 1));
+
+            List<IPerson> persons = new List<IPerson>();
+            persons.Add(new Student
+            {
+                FirstName = "Stark",
+                LastName = "Tony"
+            });
+
+            persons.Add(new Teacher
+            {
+                FirstName = "Parker",
+                LastName = "Peter"
+            });
+
+            persons.Add(new Worker
+            {
+                FirstName = "Banner",
+                LastName = "Bruce"
+            });
+
+            persons.Add(new Student
+            {
+                FirstName = "Lord",
+                LastName = "Star"
+            });
+
+            var result = persons.Where(e => e.FirstName.Contains("k"));
+            foreach (var person in result)
+                Console.WriteLine(person.FirstName + " " + person.LastName);
         }
 
         static void Hello(IPerson person)
