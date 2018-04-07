@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1FDD10BC-6082-41D8-863B-FFCA0B83D3FC}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>SampleCodeFirst</RootNamespace>
-    <AssemblyName>SampleCodeFirst</AssemblyName>
+    <ProjectGuid>{0FD08D30-3B0C-4A1B-930A-83A198E4B644}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Models</RootNamespace>
+    <AssemblyName>Models</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -49,7 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Context\SampleDbContext.cs" />
+    <Compile Include="Migrations\201804071127401_SampleCF.cs" />
+    <Compile Include="Migrations\201804071127401_SampleCF.Designer.cs">
+      <DependentUpon>201804071127401_SampleCF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804071141559_init002.cs" />
+    <Compile Include="Migrations\201804071141559_init002.Designer.cs">
+      <DependentUpon>201804071141559_init002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,10 +70,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{0FD08D30-3B0C-4A1B-930A-83A198E4B644}</Project>
-      <Name>Models</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201804071127401_SampleCF.resx">
+      <DependentUpon>201804071127401_SampleCF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804071141559_init002.resx">
+      <DependentUpon>201804071141559_init002.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
