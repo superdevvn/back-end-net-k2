@@ -11,8 +11,8 @@ namespace Bai2
         static void Main(string[] args)
         {
             //Homework1();
-            //Homework2();
-            Homework3();
+            Homework2();
+            //Homework3();
         }
         static void InitProduct(List<Product> products)
         {
@@ -153,7 +153,7 @@ namespace Bai2
             /* .
              * .
              * .
-             * Total: Quantity * Price (Total > 1,000,000) */
+             * Total: Quantity * Price (Total > 10,000,000) */
 
             //Declare
             List<Product> products = new List<Product>();
@@ -170,7 +170,8 @@ namespace Bai2
                 Date = order.Date,
                 UnitPrice = product.Price/1.0,
                 Total = order.Quantity * product.Price/1.0
-            });
+            })
+                               .Where(or => or.Total > 10000000);
             foreach (var order in result)
             {
                 Console.WriteLine("OrderCode:\t" + order.OrderCode);
