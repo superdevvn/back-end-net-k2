@@ -10,8 +10,9 @@ namespace Models.Context
     public class SampleDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public SampleDbContext()
-            : base("Data Source=DESKTOP-15KKVN2\\SQLEXPRESS;Initial Catalog=SampleCF;Integrated Security=True")
+            : base("Data Source=DESKTOP-15KKVN2\\SQLEXPRESS;Initial Catalog=SampleCF2;Integrated Security=True")
         {
 
         }
