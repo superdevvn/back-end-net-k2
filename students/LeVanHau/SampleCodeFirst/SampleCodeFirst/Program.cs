@@ -12,82 +12,69 @@ namespace SampleCodeFirst
     {
         static void Main(string[] args)
         {
-            Q2();
+            Q3();
         }
 
-        //read
         static void Q1()
         {
             var context = new SampleDbContext();
-            var products = context.Products.ToList();
-            foreach (var item in products)
+            var orders = context.Orders.Select(s => new
             {
-                Console.WriteLine("Code: " + item.Code + " Name: " + item.Name + " Price: " + item.Price);
+                Id = s.Id,
+                ProductId = s.ProductId,
+                ProductName = s.Product.Name,
+                ProductPrice = s.Product.Price,
+                Quantity = s.Quantity,
+                Total = s.Quantity * s.Product.Price
+            });
+            foreach (var order in orders)
+            {
+                Console.WriteLine(
+                    string.Format(
+                        "Id: {0}, " +
+                        "Product Name: {1}, " +
+                        "Product Price: {2}, " +
+                        "Total: {3}", order.Id, order.ProductName, order.ProductPrice, order.Total));
             }
         }
 
-        //create
         static void Q2()
         {
-            var product = new Product();
-            Console.Write("Input code: ");
-            product.Code = Console.ReadLine();
-            Console.Write("Input Name: ");
-            product.Name = Console.ReadLine();
-            Console.Write("Input Price: ");
-            product.Price = Double.Parse(Console.ReadLine());
+            var order = new Order();
+            order.Product = new Product();
+            Console.WriteLine("Input code: ");
+            order.Product.Code = Console.ReadLine();
 
+            Console.WriteLine("Input name: ");
+            order.Product.Name = Console.ReadLine();
+
+            Console.WriteLine("Input price: ");
+            order.Product.Price = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Input quantity: ");
+            order.Quantity = int.Parse(Console.ReadLine());
+            //create product in db
             var context = new SampleDbContext();
-            context.Products.Add(product);
+            context.Orders.Add(order);
             context.SaveChanges();
-            Console.WriteLine("Save completed!");
         }
 
-        //update
         static void Q3()
         {
-            using(var context = new SampleDbContext())
-            {
-                var product = context.Products.Where(s => s.Code == "004").FirstOrDefault();
-                if (product == null) Console.WriteLine("Not found");
-                else
-                {
-                    product.Name = product.Name + "Update";
-                }
-            }
-        }
-
-        //delete
-        static void Q4()
-        {
+            var orders = new List<Order>();
             using (var context = new SampleDbContext())
             {
-                var product = context.Products.Where(s => s.Code == "004").FirstOrDefault();
-                context.Products.Remove(product);
-                context.SaveChanges();
+                orders = context.Orders.ToList();
             }
-        }
-
-        //update vài thằng 1 lúc, multiple
-        static void Q5()
-        {
-            using (var context = new SampleDbContext())
+            foreach (var order in orders)
             {
-                var products = context.Products.ToList();
-                foreach (var pro in products)
-                {
-                    pro.Price = 10000000;
-                }
-                context.SaveChanges();
-            }
-        }
-
-        //
-        static void Q6()
-        {
-            using (var context = new SampleDbContext())
-            {
-                context.Database.ExecuteSqlCommand("UPDATE Products SET Price = 15000000");
+                Console.WriteLine(
+                    string.Format(
+                        "Id: {0}, " +
+                        "Product Name: {1}, " +
+                        "Product Price: {2}, " +
+                        "Total: {3}", order.Id, order.Product.Name,
+                        order.Product.Price, order.Product.Price * order.Quantity));
             }
         }
     }

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0FD08D30-3B0C-4A1B-930A-83A198E4B644}</ProjectGuid>
+    <ProjectGuid>{DC7A6B6B-35F8-4EF7-952B-78252470582C}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Models</RootNamespace>
     <AssemblyName>Models</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -52,22 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\SampleDbContext.cs" />
-    <Compile Include="Migrations\201804071127401_SampleCF.cs" />
-    <Compile Include="Migrations\201804071127401_SampleCF.Designer.cs">
-      <DependentUpon>201804071127401_SampleCF.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804071141559_init002.cs" />
-    <Compile Include="Migrations\201804071141559_init002.Designer.cs">
-      <DependentUpon>201804071141559_init002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804081102091_initOrder.cs" />
-    <Compile Include="Migrations\201804081102091_initOrder.Designer.cs">
-      <DependentUpon>201804081102091_initOrder.cs</DependentUpon>
+    <Compile Include="Context\SDbContext.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="Migrations\201804081229593_init1.cs" />
+    <Compile Include="Migrations\201804081229593_init1.Designer.cs">
+      <DependentUpon>201804081229593_init1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="StudentCourse.cs" />
+    <Compile Include="Subject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,14 +64,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804071127401_SampleCF.resx">
-      <DependentUpon>201804071127401_SampleCF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804071141559_init002.resx">
-      <DependentUpon>201804071141559_init002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804081102091_initOrder.resx">
-      <DependentUpon>201804081102091_initOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804081229593_init1.resx">
+      <DependentUpon>201804081229593_init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

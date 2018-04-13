@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Models.Context
 {
-    public class SampleDbContext : DbContext
+    public class SDbContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Order> Orders { get; set; }
-
-        public SampleDbContext() : base("Data Source=DESKTOP-VHR2AHS\\HAULV;Initial Catalog=SampleCF1;Persist Security Info=True;User ID=sa;Password=121114")
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<StudentCourse> StudentCourses { get; set; }
+        public SDbContext() : base("Data Source=DESKTOP-VHR2AHS\\HAULV;Initial Catalog=SMSuper;Persist Security Info=True;User ID=sa;Password=121114")
         {
 
         }
-
         public override int SaveChanges()
         {
             var entries = ChangeTracker.Entries();

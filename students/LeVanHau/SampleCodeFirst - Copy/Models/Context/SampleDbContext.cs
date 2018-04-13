@@ -10,7 +10,7 @@ namespace Models.Context
     public class SampleDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
-        public DbSet<Order> Orders { get; set; }
+
 
         public SampleDbContext() : base("Data Source=DESKTOP-VHR2AHS\\HAULV;Initial Catalog=SampleCF1;Persist Security Info=True;User ID=sa;Password=121114")
         {
@@ -27,7 +27,7 @@ namespace Models.Context
                     Console.WriteLine("Created");
                     foreach (var property in entry.CurrentValues.PropertyNames)
                     {
-                        Console.WriteLine(property + ": " + entry.CurrentValues[property].ToString());
+                        Console.WriteLine(property+ ": " + entry.CurrentValues[property].ToString());
                     }
                 }
             }
