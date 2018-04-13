@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63343615-431C-48E2-8592-2592ADB598F4}</ProjectGuid>
+    <ProjectGuid>{1B112304-DC7A-4026-ADAE-9CDDEAAA9566}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Models</RootNamespace>
     <AssemblyName>Models</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,12 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\SampleCodeFirst\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\SampleCodeFirst\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -49,45 +47,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\SampleDbContext.cs" />
-    <Compile Include="Migrations\201804071124512_init001.cs" />
-    <Compile Include="Migrations\201804071124512_init001.Designer.cs">
-      <DependentUpon>201804071124512_init001.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804071141259_init002.cs" />
-    <Compile Include="Migrations\201804071141259_init002.Designer.cs">
-      <DependentUpon>201804071141259_init002.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804081047489_init003.cs" />
-    <Compile Include="Migrations\201804081047489_init003.Designer.cs">
-      <DependentUpon>201804081047489_init003.cs</DependentUpon>
+    <Compile Include="Account.cs" />
+    <Compile Include="Content\SampleDbContext.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="Migrations\201804101309073_migra-1.cs" />
+    <Compile Include="Migrations\201804101309073_migra-1.Designer.cs">
+      <DependentUpon>201804101309073_migra-1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="StudentCourse.cs" />
+    <Compile Include="Subject.cs" />
+    <Compile Include="Teacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804071124512_init001.resx">
-      <DependentUpon>201804071124512_init001.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804071141259_init002.resx">
-      <DependentUpon>201804071141259_init002.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804081047489_init003.resx">
-      <DependentUpon>201804081047489_init003.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804101309073_migra-1.resx">
+      <DependentUpon>201804101309073_migra-1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
