@@ -39,5 +39,20 @@ namespace SampleApi.Controllers
                 return Ok(user);
             }
         }
+
+        [HttpPost]
+        [Route("api/login")]
+        public IHttpActionResult Login(JObject obj)
+        {
+            var username = obj["username"].ToString();
+            var password = obj["password"].ToString();
+            var hashPassword = MD5Encrypt(password);
+            using (var context = new ApiDbContext())
+            {
+                var user = context.Users.FirstOrDefault(e => e.Username == username && e.HashedPassword == hashPassword);
+                if (user == null) throw new Exception("Login sai rồi mầy");
+                return Ok(user);
+            }
+        }
     }
 }
