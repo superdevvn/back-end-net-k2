@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Models;
 using Repositories;
@@ -8,7 +9,8 @@ namespace Services
     public class RoleService
     {
         RoleRepository roleRepository = new RoleRepository();
-        public List<Role> GetList()
+        UserService userService = new UserService();
+        public IEnumerable GetList()
         {
             return roleRepository.GetList();
         }
@@ -28,13 +30,16 @@ namespace Services
                 if (roleRepository.HasCode(role.Code)) throw new Exception("ROLE_DUPLICATE_CODE");
                 role.Id = Guid.NewGuid();
                 role.CreatedDate = DateTime.Now;
+                role.CreatedBy = userService.GetCurrrentUser().Id;
                 role.ModifiedDate = DateTime.Now;
+                role.ModifiedBy = userService.GetCurrrentUser().Id;
                 return roleRepository.Create(role);
             }
             else
             {
                 if(roleRepository.HasCode(role.Id, role.Code)) throw new Exception("ROLE_DUPLICATE_CODE");
                 role.ModifiedDate = DateTime.Now;
+                role.ModifiedBy = userService.GetCurrrentUser().Id;
                 return roleRepository.Update(role);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Models;
@@ -8,11 +9,20 @@ namespace Repositories
 {
     public class RoleRepository
     {
-        public List<Role> GetList()
+        public IEnumerable GetList()
         {
             using (var context = new ApiDbContext())
             {
-                return context.Roles.ToList();
+                return context.Roles.Select(e => new
+                {
+                    Id = e.Id,
+                    Code = e.Code,
+                    Name = e.Name,
+                    CreatedDate = e.CreatedDate,
+                    CreatorName = e.Creator.Username,
+                    ModifiedDate = e.ModifiedDate,
+                    ModifierName = e.Modifier.Username
+                }).ToList();
             }
         }
 

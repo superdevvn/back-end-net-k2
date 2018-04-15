@@ -8,11 +8,14 @@ using System.Web.Http;
 using Models;
 using Models.Common;
 using Newtonsoft.Json.Linq;
+using Services;
 
 namespace SampleApi.Controllers
 {
     public class UserApiController: ApiController
     {
+        UserService userService = new UserService();
+
         public string MD5Encrypt(string password)
         {
             var md5Hasher = new MD5CryptoServiceProvider();
@@ -44,14 +47,15 @@ namespace SampleApi.Controllers
         [Route("api/login")]
         public IHttpActionResult Login(JObject obj)
         {
-            var username = obj["username"].ToString();
-            var password = obj["password"].ToString();
-            var hashPassword = MD5Encrypt(password);
-            using (var context = new ApiDbContext())
+            try
             {
-                var user = context.Users.FirstOrDefault(e => e.Username == username && e.HashedPassword == hashPassword);
-                if (user == null) throw new Exception("Login sai rồi mầy");
-                return Ok(user);
+                var username = obj["username"].ToString();
+                var password = obj["password"].ToString();
+                return Ok(userService.Login(username, password));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

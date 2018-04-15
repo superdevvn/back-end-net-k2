@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using Services;
 
 namespace SampleApi.Controllers
 {
@@ -16,14 +17,13 @@ namespace SampleApi.Controllers
         {
             try
             {
-                var token = actionContext.Request.Headers
-                    .FirstOrDefault(header => header.Key == "Auth-SuperDev")
-                    .Value.ToString();
-                if(token == "ABC") base.OnActionExecuting(actionContext);
+                var userService = new UserService();
+                userService.GetCurrrentUser();
+                base.OnActionExecuting(actionContext);
             }
             catch
             {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.Unauthorized));
             }
         }
     }

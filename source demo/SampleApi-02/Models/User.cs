@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class User: BaseEntity
+    public class User
     {
         public Guid Id { get; set; }
 
@@ -17,7 +17,18 @@ namespace Models
 
         public string HashedPassword { get; set; }
 
+        public DateTime CreatedDate { get; set; }
+
+        public Guid? CreatedBy { get; set; }
+
+        public DateTime ModifiedDate { get; set; }
+
+        public Guid? ModifiedBy { get; set; }
+
         [ForeignKey("RoleId")]
         public Role Role { get; set; }
+
+        [ForeignKey("CreatedBy")]
+        public User Creator { get; set; }
     }
 }

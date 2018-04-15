@@ -15,8 +15,7 @@ namespace SampleApi.Controllers
     public class RoleApiController : ApiController
     {
         RoleService roleService = new RoleService();
-
-        
+ 
         [HttpPost]
         [Route("api/createRole")]
         public IHttpActionResult Create(JObject obj)

@@ -63,6 +63,14 @@
     <Compile Include="Migrations\201804141209243_003.Designer.cs">
       <DependentUpon>201804141209243_003.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804151242478_Init004.cs" />
+    <Compile Include="Migrations\201804151242478_Init004.Designer.cs">
+      <DependentUpon>201804151242478_Init004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804151243340_Init005.cs" />
+    <Compile Include="Migrations\201804151243340_Init005.Designer.cs">
+      <DependentUpon>201804151243340_Init005.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +89,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804141209243_003.resx">
       <DependentUpon>201804141209243_003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804151242478_Init004.resx">
+      <DependentUpon>201804151242478_Init004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804151243340_Init005.resx">
+      <DependentUpon>201804151243340_Init005.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
