@@ -46,30 +46,6 @@ namespace Repositories
             }
         }
 
-        public Role Create(Role role)
-        {
-            using (var context = new ApiDbContext())
-            {
-                context.Roles.Add(role);
-                context.SaveChanges();
-                return context.Roles.Find(role.Id);
-            }
-        }
-
-        public Role Update(Role role)
-        {
-            using (var context = new ApiDbContext())
-            {
-                var entity = context.Roles.Find(role.Id);
-                entity.Code = role.Code;
-                entity.Name = role.Name;
-                entity.ModifiedDate = role.ModifiedDate;
-                context.SaveChanges();
-                context.Entry(entity).Reload();
-                return entity;
-            }
-        }
-
         public void Delete(Guid id)
         {
             using (var context = new ApiDbContext())
