@@ -21,5 +21,7 @@ namespace TravelManagement.Models
         public string Description { get; set; }
 
         public string Policy { get; set; }
+
+        public virtual List<TourDetail> TourDetails { get; set; }
     }
 }

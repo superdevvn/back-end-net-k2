@@ -35,6 +35,14 @@ namespace TravelManagement.Repositories
             }
         }
 
+        public virtual async Task<TEntity> Get(Guid id)
+        {
+            using (var context = new TMDbContext())
+            {
+                return await context.Set<TEntity>().FindAsync(id);
+            }
+        }
+
         private void CloneObject(object des, object src)
         {
             foreach (PropertyInfo propertyInfo in des.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))

@@ -21,5 +21,10 @@ namespace TravelManagement.Services
         {
             return await repository.Update(entity);
         }
+
+        public virtual async Task<TEntity> Get(Guid id)
+        {
+            return await repository.Get(id);
+        }
     }
 }
