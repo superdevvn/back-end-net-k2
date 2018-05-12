@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
@@ -20,6 +21,7 @@ namespace Repositories
             }
         }
 
+<<<<<<< HEAD
         public virtual TEntity Create(TEntity entity)
         {
             using (var context = new ApiDbContext())
@@ -28,6 +30,16 @@ namespace Repositories
                 context.SaveChanges();
                 Guid id = new Guid(entity.GetType().GetProperty("Id")
                     .GetValue(entity, null).ToString());
+=======
+        public virtual TEntity Create(TEntity entity, Guid? userId = null)
+        {
+            using (var context = new ApiDbContext())
+            {
+                Guid id = Guid.NewGuid();
+                entity.GetType().GetProperty("Id").SetValue(entity, id);
+                context.Set<TEntity>().Add(entity);
+                context.SaveChanges(userId);
+>>>>>>> 108f629bd185e29d1aacff436cfac1af6b8b34f2
                 return Get(id);
             }
         }
@@ -36,8 +48,12 @@ namespace Repositories
         {
             using (var context = new ApiDbContext())
             {
+<<<<<<< HEAD
                 Guid id = new Guid(entity.GetType().GetProperty("Id")
                     .GetValue(entity, null).ToString());
+=======
+                Guid id = new Guid(entity.GetType().GetProperty("Id").GetValue(entity, null).ToString());
+>>>>>>> 108f629bd185e29d1aacff436cfac1af6b8b34f2
                 var entry = context.Set<TEntity>().Find(id);
                 // Gán từng giá trị của các thuộc tính entity cho entry
                 CloneObject(entry, entity);

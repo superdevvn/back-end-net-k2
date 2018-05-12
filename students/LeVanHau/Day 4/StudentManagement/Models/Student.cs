@@ -12,6 +12,8 @@ namespace Models
     {
         public int Id { get; set; }
 
+        public int AccountId { get; set; }
+
         [StringLength(15)]
         [Index("IX_Code", IsUnique = true)]
         public String Code { get; set; }
@@ -22,18 +24,14 @@ namespace Models
         [StringLength(50)]
         public String LastName { get; set; }
 
-        [StringLength(50)]
-        public String Grade { get; set; }
-
-        public GenderType Gender { get; set; }
+        public int GenderId { get; set; }
 
         public DateTime Birthday { get; set; }
 
-        public enum GenderType
-        {
-            Male,
-            Female,
-            Other
-        }
+        [ForeignKey("GenderId")]
+        public virtual Gender GenderType { get; set; }
+
+        [ForeignKey("AccountId")]
+        public virtual Account AccountStudent { get; set; }
     }
 }

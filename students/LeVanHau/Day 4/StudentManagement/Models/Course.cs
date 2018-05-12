@@ -14,11 +14,16 @@ namespace Models
 
         public int SubjectId { get; set; }
 
+        public int TeacherId { get; set; }
+
         public DateTime StartedDate { get; set; }
 
         public DateTime EndedDate { get; set; }
 
         [ForeignKey("SubjectId")]
         public virtual Subject Subject { get; set; }
+
+        [ForeignKey("TeacherId")]
+        public virtual Teacher Teacher { get; set; }
     }
 }

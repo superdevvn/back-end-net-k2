@@ -19,6 +19,10 @@ namespace Models
         [StringLength(50)]
         public String Name { get; set; }
 
+        public int Credits { get; set; }
+
+        public Double Tuition { get; set; }
+
         [StringLength(500)]
         public String Description { get; set; }
     }
