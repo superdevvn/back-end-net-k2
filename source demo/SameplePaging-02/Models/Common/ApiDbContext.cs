@@ -29,11 +29,20 @@ namespace Models.Common
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
 
+<<<<<<< HEAD
+        public override int SaveChanges()
+        {
+            Guid? userId = null; // Utility.CurrentUserId;
+            var modifiedEntries = ChangeTracker.Entries()
+                .Where(x => x.Entity is BaseEntity &&
+                (x.State == EntityState.Added ||
+=======
         public int SaveChanges(Guid? userId = null)
         {
             var modifiedEntries = ChangeTracker.Entries()
                 .Where(x => x.Entity is BaseEntity && 
                 (x.State == EntityState.Added || 
+>>>>>>> 108f629bd185e29d1aacff436cfac1af6b8b34f2
                 x.State == EntityState.Modified));
             foreach (var entry in modifiedEntries)
             {
@@ -57,6 +66,9 @@ namespace Models.Common
             }
             return base.SaveChanges();
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 108f629bd185e29d1aacff436cfac1af6b8b34f2
     }
 }

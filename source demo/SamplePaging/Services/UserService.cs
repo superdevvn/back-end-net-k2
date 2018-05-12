@@ -47,7 +47,8 @@ namespace Services
             var username = decrypt.Split('~')[0];
             var password = decrypt.Split('~')[1];
             var user = userRepository.Get(username);
-            if (user != null && user.HashedPassword == MD5Encrypt(password)) return user;
+            if (user != null && user.HashedPassword
+                == MD5Encrypt(password)) return user;
             else throw new Exception();   
         }
     }
