@@ -15,5 +15,12 @@ namespace TravelManagement.APIs
         {
             return Ok(await tourService.Create(tour));
         }
+
+        [HttpPost]
+        [Route("updateTour")]
+        public async Task<IHttpActionResult> Update(Tour tour)
+        {
+            return Ok(await tourService.Update(tour));
+        }
     }
 }
